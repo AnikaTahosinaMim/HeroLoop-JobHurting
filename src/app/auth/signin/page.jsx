@@ -111,6 +111,7 @@ export default function SigninPage() {
                 type="button"
                 onClick={toggleVisibility}
                 className="text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 transition"
+                aria-label="Toggle password visibility"
               >
                 {isVisible ? <EyeSlash size={18} /> : <Eye size={18} />}
               </button>

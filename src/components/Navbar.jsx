@@ -15,7 +15,7 @@ const navLinks = [
 export default function MainNavbar() {
   const [open, setOpen] = useState(false);
   const { data: session, isPending } = useSession();
-  // console.log(session, "session", isPending,"ispemding");
+  console.log(session, "session", isPending,"ispemding");
   const user = session?.user;
   const handlesingOut =async()=>{
     await authClient.signOut();
@@ -86,6 +86,7 @@ export default function MainNavbar() {
           <button
             onClick={() => setOpen(!open)}
             className="md:hidden text-white text-2xl"
+            aria-label={open ? "Close menu" : "Open menu"}
           >
             {open ? "✕" : "☰"}
           </button>

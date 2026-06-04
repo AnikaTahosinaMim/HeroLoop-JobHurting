@@ -20,6 +20,7 @@ export default function SignupPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setRole] = useState("seeker");
 
   // UI States
   const [isVisible, setIsVisible] = useState(false);
@@ -42,6 +43,11 @@ export default function SignupPage() {
         password,
         name,
         callbackURL: "/",
+        fetchOptions: {
+          body: {
+            role,
+          },
+        },
       });
 
       if (authError) {
@@ -71,27 +77,30 @@ export default function SignupPage() {
             Fill in the fields below to get started
           </p>
         </div>
-          <RadioGroup defaultValue="seeker" name="role">
-            <Label>Plan selection</Label>
-            <Description>Choose the plan that suits you best</Description>
-            <Radio value="seeker">
-              <Radio.Control>
-                <Radio.Indicator />
-              </Radio.Control>
-              <Radio.Content>
-                <Label>Jon seeker</Label>
-              </Radio.Content>
-            </Radio>
-            <Radio value="Premium">
-              <Radio.Control>
-                <Radio.Indicator />
-              </Radio.Control>
-              <Radio.Content>
-                <Label>recruter</Label>
-              </Radio.Content>
-            </Radio>
-            
-          </RadioGroup>
+        <RadioGroup
+          defaultValue="seeker"
+          name="role"
+          onChange={(value) => setRole(value)}
+        >
+          <Label>Plan selection</Label>
+          <Description>Choose the plan that suits you best</Description>
+          <Radio value="seeker">
+            <Radio.Control>
+              <Radio.Indicator />
+            </Radio.Control>
+            <Radio.Content>
+              <Label>Jon seeker</Label>
+            </Radio.Content>
+          </Radio>
+          <Radio value="recruter">
+            <Radio.Control>
+              <Radio.Indicator />
+            </Radio.Control>
+            <Radio.Content>
+              <Label>recruter</Label>
+            </Radio.Content>
+          </Radio>
+        </RadioGroup>
 
         {/* Form Body */}
         <form onSubmit={handleSignup} className="flex flex-col gap-5">
@@ -165,7 +174,6 @@ export default function SignupPage() {
             </InputGroup>
           </TextField>
           {/* role base authentication */}
-        
 
           {/* Dynamic Status Badges */}
           {error && (
