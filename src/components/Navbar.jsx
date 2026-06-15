@@ -7,7 +7,7 @@ import { authClient, useSession } from "@/lib/auth-client";
 import { Button } from "@heroui/react";
 
 const navLinks = [
-  { name: "Browse Jobs", href: "/jobs" },
+  { name: "Browse Jobs", href: "/job" },
   { name: "Companies", href: "/companies" },
   { name: "Pricing", href: "/pricing" },
 ];
